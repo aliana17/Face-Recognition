@@ -22,7 +22,7 @@ for i, files in enumerate(onlyfiles):
     images = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     Training_Data.append(np.asarray(images, dtype=np.uint8))
     Labels.append(i)
-# 
+
 # Create a numpy array for both training data and labels
 Labels = np.asarray(Labels, dtype=np.int32)
 model=cv2.face_LBPHFaceRecognizer.create()
@@ -66,9 +66,9 @@ while True:
         # Pass face to prediction model
         # "results" comprises of a tuple containing the label and the confidence value
         results = model.predict(face)
-        print(results)
+        print(Results)
         if results[1] < 500:
-            confidence = int( 100 * (1 - (results[1])/400) )
+            confidence = int( 100 * (1 - (Results[1])/400) )
             display_string = str(confidence) + '% Confident it is User'
             
         cv2.putText(image, display_string, (100, 120), cv2.FONT_HERSHEY_COMPLEX, 1, (255,120,150), 2)
